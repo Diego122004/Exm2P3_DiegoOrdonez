@@ -24,7 +24,7 @@ void Jugador::setSaldo(int saldo) {
 	saldo = this->_saldo;
 };
 void Jugador::toString() {
-	cout<< "Id:" << this->_id << "\n" << "Nombre:" << this->_nombre << "\n" << "Saldo:" << this->_saldo << "\n" << "Nivel de habilidad:" << this->_nivH<< "\n";
+	cout<< this->_id << this->_nombre << this->_saldo << this->_nivH;
 };
 void Jugador::sumarSaldo(int saldo) {
 	this->_saldo += saldo;

@@ -3,27 +3,36 @@
 #include <iostream>
 using namespace std;
 
-void registrar_Nuevo_Jugador(vector<Jugador*> casino) {
+void registrar_Nuevo_Jugador(vector<Jugador*> &casino) {
     vector<Apuesta*> apuestas;
     int id, saldo,level;
     string name;
 
-    cout << "ingrese el Id del jugador";
+    cout << "ingrese el Id del jugador"<< endl;
     cin >> id;
-    cout << "ingrese el nombre del Jugador";
+    cout << "ingrese el nombre del Jugador" << endl;
     cin >> name;
-    cout << "Ingrese el saldo inicias del Jugador";
+    cout << "Ingrese el saldo inicias del Jugador" << endl;
     cin >> saldo;
-    cout << "Ingrese la hablilidad del Jugador";
+    cout << "Ingrese la hablilidad del Jugador" << endl;
     cin >> level;
 
-   // Jugador = new Jugador(apuestas, id, name, saldo, level)
-    casino.push_back(new Jugador(apuestas, id, name, saldo, level));
-    
+    Jugador* jugador = new Jugador(apuestas, id, name, saldo, level);
+    casino.push_back(jugador);
+};
+
+void listar_Jugadores(vector<Jugador*> casino) {
+
+    for (int i = 0; i < casino.size(); i++) {
+        cout << i;
+        casino[i]->toString();
+    }
+       
 };
 
 void menu()
 {
+    vector<Jugador*> casino;
     int opcion;
     do {
         cout << "MENU" << endl;
@@ -37,33 +46,38 @@ void menu()
         cout << "8. Salir" << endl;
 
         cin >> opcion;
-        switch (opcion != 0)
+        switch (opcion)
         {
-        case 0: {
+        case 1:
+
+            registrar_Nuevo_Jugador(casino);
+            break;
+
+
+        case 2:
+
+            listar_Jugadores(casino);
 
             break;
-        };
+        case 3:break;
+        case 4: break;
+        case 5: break;
+        case 6: break;
+        case 7: break;
 
-        case 1: {
-            
-
-
-        };
-              break;
-        case 2: {
-            
-        };
-              break;
+        case 8: 
+            opcion = 8 ;
+            break;
         default:
             menu();
             break;
         };
-    } while (opcion != 0);
+    } while (opcion != 8);
 };
 
 int main()
 {
-    vector<Jugador*> casino;
+    
     menu();
 }
 
